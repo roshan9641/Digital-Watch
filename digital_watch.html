@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Watch</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: white;
+      transition: background 1s ease-in-out; 
+    }
+
+    .container {
+      padding: 47px 85px;
+      text-align: center;
+      font-size: 3rem;
+      border-radius: 75px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 25px 26px 28px rgba(0, 0, 0, 0.2);
+     
+    }
+
+    #show-time {
+      padding: 20px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="show-time"></h1>
+  </div>
+
+  <script>
+    let display_time = document.querySelector("#show-time");
+
+    function updateTime() {
+      let time = new Date();
+      let r = time.toLocaleTimeString();
+      display_time.innerText = r;
+    }
+
+    function getRandomColor() {
+      return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    }
+
+    function updateBackground() {
+      let color1 = getRandomColor();
+      let color2 = getRandomColor();
+      document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2})`;
+    }
+
+    setInterval(updateTime, 1000); 
+    setInterval(updateBackground, 60000); 
+
+    updateTime(); 
+    updateBackground();
+  </script>
+</body>
+</html>
